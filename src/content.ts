@@ -1,1 +1,3 @@
-console.log("Ello from content.ts");
+if (window.location.pathname !== "/") {
+  console.log("HEY THIS IS WORKING");
+}

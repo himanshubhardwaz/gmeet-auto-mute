@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     content: "./src/content.ts",
     popup: "./src/popup.ts",
+    background: "./src/background.ts",
   },
   output: {
     filename: "[name].js",
@@ -36,4 +37,7 @@ module.exports = {
       ],
     }),
   ],
+  devServer: {
+    hot: true,
+  },
 };
