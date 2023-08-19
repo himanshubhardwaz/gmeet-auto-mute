@@ -4,8 +4,10 @@
   "description": "",
   "main": "content.js",
   "scripts": {
-    "build": "browserify src/content.ts -p [ tsify ] -o dist/content.js",
-    "build-wp": "webpack --mode=production"
+    "build": "webpack --mode=development",
+    "watch": "webpack --mode=development --watch",
+    "start": "webpack serve --mode=development --hot",
+    "build:prod": "webpack --mode=production"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
     "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "write-file-webpack-plugin": "^4.5.1"
   }
 }
