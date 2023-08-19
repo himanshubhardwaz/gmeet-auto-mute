@@ -1,0 +1,20 @@
+{
+  "name": "gmeet-auto-mute",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify src/content.ts -p [ tsify ] -o dist/content.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "ts-loader": "^9.4.4",
+    "tsify": "^5.0.4",
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
