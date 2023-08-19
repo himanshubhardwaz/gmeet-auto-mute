@@ -1,35 +1,35 @@
-let currentTry = 1;
-const maxTry = 10;
+function waitForElm(selector: string): Promise<HTMLElement> {
+  return new Promise((resolve) => {
+    if (document.querySelector(selector)) {
+      return resolve(document.querySelector(selector) as HTMLElement);
+    }
 
-async function wait(time = 500): Promise<void> {
-  return new Promise<void>((resolve, reject) => {
-    setTimeout(() => {
-      currentTry++;
-      try {
-        muteAudioAndVideo();
-        resolve();
-      } catch (error) {
-        reject(error);
+    const observer = new MutationObserver(() => {
+      if (document.querySelector(selector)) {
+        resolve(document.querySelector(selector) as HTMLElement);
+        observer.disconnect();
       }
-    }, time);
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
   });
 }
 
-function muteAudioAndVideo(): void {
-  const audioToggle = document.querySelector(
-    '[data-is-muted="false"][aria-label="Turn off microphone (⌘ + d)"]'
-  ) as HTMLLIElement;
-
-  const videoToggle = document.querySelector(
-    '[data-is-muted="false"][aria-label="Turn off camera (⌘ + e)"]'
-  ) as HTMLLIElement;
-
+async function muteAudioAndVideo(): Promise<void> {
+  const [audioToggle, videoToggle] = await Promise.all([
+    waitForElm(
+      '[data-is-muted="false"][aria-label="Turn off microphone (⌘ + d)"]'
+    ),
+    waitForElm('[data-is-muted="false"][aria-label="Turn off camera (⌘ + e)"]'),
+  ]);
   if (audioToggle) {
     audioToggle.click();
   } else {
     throw new Error("Could not find audio toggle");
   }
-
   if (videoToggle) {
     videoToggle.click();
   } else {
@@ -37,26 +37,10 @@ function muteAudioAndVideo(): void {
   }
 }
 
-function waitRecurcively(time: number): void {
-  console.log("GOING TO WAIT FOR: ", time, " ms");
-  if (currentTry < maxTry) {
-    wait(time)
-      .then(() => {
-        if (window.location.pathname !== "/") {
-          try {
-            muteAudioAndVideo();
-          } catch (error) {
-            throw error;
-          }
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        if (currentTry < maxTry) {
-          waitRecurcively(time * 1.5);
-        }
-      });
-  }
-}
-
-waitRecurcively(500);
+muteAudioAndVideo()
+  .then(() => {
+    console.log("Muted audio and video");
+  })
+  .catch((error) => {
+    console.error(error);
+  });
