@@ -3,7 +3,7 @@
   "name": "Google Meet Auto Mute",
   "version": "1.0",
   "description": "Automatically mutes audio and video on meet.google.com",
-  "permissions": ["activeTab"],
+  "permissions": ["activeTab", "tabs"],
   "content_scripts": [
     {
       "matches": ["https://meet.google.com/*"],

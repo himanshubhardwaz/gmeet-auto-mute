@@ -37,10 +37,19 @@ async function muteAudioAndVideo(): Promise<void> {
   }
 }
 
-muteAudioAndVideo()
-  .then(() => {
-    console.log("Muted audio and video");
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+if (window.location.pathname !== "/") {
+  muteAudioAndVideo()
+    .then(() => {
+      console.log("Muted audio and video");
+      const { origin, pathname } = window.location;
+
+      console.log({ origin, pathname });
+
+      navigator.clipboard.writeText(`${origin}${pathname}`).then(() => {
+        console.log("Copied meeting link to clipboard");
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
