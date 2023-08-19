@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Google Meet Auto Mute",
+  "version": "1.0",
+  "description": "Automatically mutes audio and video on meet.google.com",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

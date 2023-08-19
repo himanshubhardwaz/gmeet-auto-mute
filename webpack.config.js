@@ -3,9 +3,12 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/content.ts",
+  entry: {
+    content: "./src/content.ts",
+    popup: "./src/popup.ts",
+  },
   output: {
-    filename: "content.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "dist"),
   },
   resolve: {
