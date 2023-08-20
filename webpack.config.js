@@ -27,15 +27,15 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: "./popup.html",
+          from: "./src/popup.html",
           to: "popup.html",
         },
         {
-          from: "./popup.css",
+          from: "./src/popup.css",
           to: "popup.css",
         },
         {
-          from: "./manifest.json",
+          from: "./src/manifest.json",
           to: "manifest.json",
         },
       ],

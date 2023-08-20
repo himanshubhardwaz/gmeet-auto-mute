@@ -25,11 +25,13 @@ async function muteAudioAndVideo(): Promise<void> {
     ),
     waitForElm('[data-is-muted="false"][aria-label="Turn off camera (⌘ + e)"]'),
   ]);
+
   if (audioToggle) {
     audioToggle.click();
   } else {
     throw new Error("Could not find audio toggle");
   }
+
   if (videoToggle) {
     videoToggle.click();
   } else {
@@ -46,3 +48,18 @@ if (window.location.pathname !== "/") {
       console.error(error);
     });
 }
+
+chrome.runtime.onMessage.addListener(async (message, _sender, sendResponse) => {
+  console.log("FROM POPUP.TS -- ", { message });
+  if (message === "copy-meet-url") {
+    const copyMeetInfoButton = await waitForElm(
+      '[aria-label="Copy joining info"]'
+    );
+    if (copyMeetInfoButton) {
+      copyMeetInfoButton.click();
+      sendResponse({ message: "copied-meet-url" });
+    } else {
+      sendResponse({ message: "could-not-copy-meet-url" });
+    }
+  }
+});
