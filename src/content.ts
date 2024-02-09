@@ -1,3 +1,7 @@
+async function copyGoogleMeetUrl(): Promise<void> {
+  await navigator.clipboard.writeText(window.location.href);
+}
+
 function waitForElm(selector: string): Promise<HTMLElement> {
   return new Promise((resolve) => {
     if (document.querySelector(selector)) {
@@ -49,17 +53,15 @@ if (window.location.pathname !== "/") {
     });
 }
 
-chrome.runtime.onMessage.addListener(async (message, _sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(async (message, _sender) => {
   console.log("FROM POPUP.TS -- ", { message });
-  if (message === "copy-meet-url") {
-    const copyMeetInfoButton = await waitForElm(
-      '[aria-label="Copy joining info"]'
-    );
-    if (copyMeetInfoButton) {
-      copyMeetInfoButton.click();
-      sendResponse({ message: "copied-meet-url" });
-    } else {
-      sendResponse({ message: "could-not-copy-meet-url" });
-    }
+  if (message === "create-new-meet") {
+    copyGoogleMeetUrl()
+      .then(() => {
+        console.log("Copied meet url");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 });
