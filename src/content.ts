@@ -1,5 +1,6 @@
 async function copyGoogleMeetUrl(): Promise<void> {
-  await navigator.clipboard.writeText(window.location.href);
+  const url = window.location.href.split("?")[0];
+  await navigator.clipboard.writeText(url);
 }
 
 function waitForElm(selector: string): Promise<HTMLElement> {
@@ -41,6 +42,14 @@ async function muteAudioAndVideo(): Promise<void> {
   } else {
     throw new Error("Could not find video toggle");
   }
+
+  copyGoogleMeetUrl()
+    .then(() => {
+      console.log("Copied meet url");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 if (window.location.pathname !== "/") {

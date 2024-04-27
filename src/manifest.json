@@ -13,6 +13,9 @@
   "background": {
     "service_worker": "background.js"
   },
+  "externally_connectable": {
+    "matches": ["*://*.google.com/*"]
+  },
   "action": {
     "default_popup": "popup.html"
   }
