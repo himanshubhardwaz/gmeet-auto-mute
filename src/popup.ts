@@ -3,22 +3,37 @@ const createNewMeetbutton = document.getElementById(
 ) as HTMLButtonElement;
 
 createNewMeetbutton.addEventListener("click", async () => {
-  chrome.tabs.create({ url: "https://meet.new/" }, (tab) => {
-    if (tab?.id) {
-      chrome.tabs.sendMessage(tab.id, "create-new-meet", (response) => {
-        if (chrome.runtime.lastError) {
-          chrome.runtime.sendMessage(
-            "Error sending message: " +
-              JSON.stringify({ error: chrome.runtime.lastError })
-          );
-        } else {
-          chrome.runtime.sendMessage(
-            "Successfully sent message to content script"
-          );
-          console.log("Message sent successfully:", response);
-        }
-      });
-    }
-    chrome.runtime.sendMessage("Error sending message, could not get tab id");
+  chrome.tabs.create({
+    url: `https://meet.new`,
   });
 });
+
+/*
+  function getCurrentSwitchState(): boolean {
+    return autoMuteToggle.checked;
+  }
+
+  const autoMuteToggle = document.getElementById(
+    "autoMuteToggle"
+  ) as HTMLInputElement;
+
+  function storeSwitchState() {
+    const isSwitchChecked = autoMuteToggle.checked;
+    localStorage.setItem(
+      "GMEET_autoMuteEnabled",
+      JSON.stringify(isSwitchChecked)
+    );
+  }
+
+  function retrieveSwitchState() {
+    const storedState = localStorage.getItem("GMEET_autoMuteEnabled");
+    if (storedState !== null) {
+      const isEnabled = JSON.parse(storedState) as boolean;
+      autoMuteToggle.checked = isEnabled;
+    }
+  }
+
+  autoMuteToggle.addEventListener("change", storeSwitchState);
+
+  retrieveSwitchState();
+*/
