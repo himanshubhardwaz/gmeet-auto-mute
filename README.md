@@ -1,6 +1,6 @@
 # GMeet Auto Mute
 
-GMeet Auto Mute is a Chrome extension that simplifies your Google Meet experience by automatically muting audio and video when joining meetings. Additionally, it provides a one-click feature to copy the current meeting link to your clipboard.
+GMeet Auto Mute is a Chrome extension that simplifies your Google Meet experience by automatically muting audio and video when joining meetings and copies the current meeting link to your clipboard.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ GMeet Auto Mute is a Chrome extension that simplifies your Google Meet experienc
 ## Features
 
 - Automatic audio and video mute upon joining Google Meet meetings.
-- Quick access to copy the current meeting link to the clipboard.
+- Copies the current meeting link to the clipboard.
 
 ## Installation
 
@@ -33,8 +33,7 @@ To install the GMeet Auto Mute Chrome extension:
 ## Usage
 
 1. Click the GMeet Auto Mute extension icon in your Chrome toolbar to open the popup.
-2. In the popup, you will find two main features:
-   - **Auto Mute**: Automatically mutes audio and video when joining Google Meet meetings. Toggle it on or off.
+2. In the popup, you will find its main feature:
    - **Create new meet**: Clicking this button will open a new Google Meet in a new tab, automatically mute audio and video (which you can toggle off using the provided extension toggle), and copy the meeting link for you to easily share with others.
 3. Customize the extension settings according to your preferences.
 4. Enjoy a seamless Google Meet experience with automatic audio and video mute!
