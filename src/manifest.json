@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Google Meet Auto Mute",
   "version": "1.0",
-  "description": "Automatically mutes audio and video on meet.google.com",
+  "description": "Create a Google Meet with a click of a button, automatically mute audio and video, and copy the Google Meet URL",
   "permissions": ["activeTab", "tabs", "clipboardWrite"],
   "content_scripts": [
     {
@@ -18,5 +18,9 @@
   },
   "action": {
     "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "./icons/favicon-16x16.png",
+    "32": "./icons/favicon-32x32.png"
   }
 }

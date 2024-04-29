@@ -38,6 +38,10 @@ module.exports = {
           from: "./src/manifest.json",
           to: "manifest.json",
         },
+        {
+          from: "./src/icons",
+          to: "icons",
+        },
       ],
     }),
   ],
