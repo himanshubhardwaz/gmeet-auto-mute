@@ -3,7 +3,7 @@
   "name": "Google Meet Auto Mute",
   "version": "1.0",
   "description": "Create a Google Meet with a click of a button, automatically mute audio and video, and copy the Google Meet URL",
-  "permissions": ["activeTab", "tabs", "clipboardWrite"],
+  "permissions": ["clipboardWrite"],
   "content_scripts": [
     {
       "matches": ["https://meet.google.com/*"],
