@@ -1,6 +1,8 @@
-# GMeet Auto Mute
+# GMeet Auto Mute 
 
 GMeet Auto Mute is a Chrome extension that simplifies your Google Meet experience by automatically muting audio and video when joining meetings and copies the current meeting link to your clipboard.
+
+<img width="1470" alt="Screenshot 2024-04-30 at 10 36 56 PM" src="https://github.com/himanshubhardwaz/gmeet-auto-mute/assets/62508572/f1efaede-8da8-43c6-bd48-1622501acab2">
 
 ## Table of Contents
 
